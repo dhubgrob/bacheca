@@ -13,8 +13,6 @@ if (!array_key_exists('userid', $_SESSION)) {
 	exit;
 }
 
-var_dump($_SESSION);
-
 
 if(!empty($_SESSION)){
 // requête qui récupère le username du membre connecté

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+</head>
+<body>
+<nav>
+    <a href="http://localhost/projets/bacheca/">
+        <div id="name-site">
+            bacheca
+        </div>
+    </a>
+    <div id="nav-items">
+        <p>Hi, <?php echo $usernameSession['username']; ?> !</p><br>
+        <a href="logout.php">log out</a>
+    </div>
+</nav>
+
+
+<div id="edition-article">
+        <h3>Modifier un article</h3>
+        <?php foreach ($articleImages as $key => $image) : ?>
+        <div class="edit-img">
+            <img src="http://localhost/projets/bacheca/uploads/<?php echo $image['file_name'];?>">
+            <a href="http://localhost/projets/bacheca/delete-img.php?id=<?= $image['id']; ?>"><button>supprimer</button></a>
+        </div>
+        <?php endforeach; ?>
+
+		<form action="edit-edit-post.php" method="post">
+            <input type='text' name='product' value=<?php echo $articleEdition['title'];?>><br><br>
+            <input type='hidden' name='hiddenid' value='<?php echo $articleEdition['id'];?>'><br><br>
+            <input type='number' name='price' value=<?php echo $articleEdition['price'];?>><br><br>
+			<textarea rows="8" cols="50" type='text' name='content'><?php echo $articleEdition['content'];?></textarea><br><br>
+			<button type="submit">Mettre à jour</button>
+		</form>
+	</div>
+
+
+</body>
+</html>

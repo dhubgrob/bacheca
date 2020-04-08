@@ -60,23 +60,31 @@ if (!empty($_POST)) {
                     $sth->execute();
                     $idArticle = $dbh->lastInsertId();
 
+                    if(strpos($urlImage1, '.jpg') OR strpos($urlImage1, '.png')) { 
+
                     $query = 'INSERT INTO images (file_name, postid) VALUES(:file_name, :postid)';
                     $sth = $dbh->prepare($query);
                     $sth->bindValue(':file_name', $urlImage1, PDO::PARAM_STR);
                     $sth->bindValue(':postid', $idArticle, PDO::PARAM_STR);
                     $sth->execute();
+                    }
 
+                    if(strpos($urlImage2, '.jpg') OR strpos($urlImage2, '.png')) {
                     $query = 'INSERT INTO images (file_name, postid) VALUES(:file_name, :postid)';
                     $sth = $dbh->prepare($query);
                     $sth->bindValue(':file_name', $urlImage2, PDO::PARAM_STR);
                     $sth->bindValue(':postid', $idArticle, PDO::PARAM_STR);
                     $sth->execute();
+                    }
+
+                    if(strpos($urlImage3, '.jpg') OR strpos($urlImage3, '.png')) {
 
                     $query = 'INSERT INTO images (file_name, postid) VALUES(:file_name, :postid)';
                     $sth = $dbh->prepare($query);
                     $sth->bindValue(':file_name', $urlImage3, PDO::PARAM_STR);
                     $sth->bindValue(':postid', $idArticle, PDO::PARAM_STR);
                     $sth->execute();
+                    }
 
                     header('Location: http://localhost/projets/bacheca/dashboard.php');
                     exit;
