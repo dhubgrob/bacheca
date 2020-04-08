@@ -28,16 +28,16 @@ if (!empty($_POST)) {
 $query = 'UPDATE posts 
     SET title=:title,
      price=:price,
-     content=:content,
-    WHERE id = :id';
+     content=:content
+    WHERE id = :newid';
 $sth = $dbh->prepare($query);
 $sth->bindValue(':title', $_POST['product'], PDO::PARAM_STR);
 $sth->bindValue(':price', $_POST['price'], PDO::PARAM_STR);
 $sth->bindValue(':content', $_POST['content'], PDO::PARAM_STR);
-$sth->bindValue(':id', $_POST['hiddenid'], PDO::PARAM_STR);
+$sth->bindValue(':newid', $_POST['hiddenid'], PDO::PARAM_INT);
 $sth->execute();
 
 
-//header('Location: http://localhost/projets/bacheca/dashboard.php');
-//exit;
+header('Location: http://localhost/projets/bacheca/dashboard.php');
+exit;
 }

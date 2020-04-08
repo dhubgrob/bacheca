@@ -29,24 +29,8 @@ $sth->bindValue(1, $_GET['id'], PDO::PARAM_INT);
 $sth->execute();
 $articleImages = $sth->fetchAll();
 
-if (!empty($_POST)) {
-
-    $query = 'UPDATE posts 
-        SET title=:title,
-         price=:price,
-         content=:content,
-        WHERE id = :id';
-    $sth = $dbh->prepare($query);
-    $sth->bindValue(':title', $_POST['title'], PDO::PARAM_STR);
-    $sth->bindValue(':price', $_POST['price'], PDO::PARAM_STR);
-    $sth->bindValue(':content', $_POST['content'], PDO::PARAM_STR);
-    $sth->bindValue(':id', $articleEdition['id'], PDO::PARAM_STR);
-    $sth->execute();
 
 
-    header('Location: http://localhost/projets/bacheca/dashboard.php');
-    exit;
-}
 
 
 

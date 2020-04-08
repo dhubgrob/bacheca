@@ -12,10 +12,17 @@
             bacheca
         </div>
     </a>
+    <h2>Gestion d'images</h2>
     <div id="nav-items">
         <p>Hi, <?php echo $usernameSession['username']; ?> !</p><br>
         <a href="logout.php">log out</a>
     </div>
+    <form action="edit-img-post.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="MAX_FILE_SIZE" value="3000000"><br><br>
+            <input type="hidden" name="hiddenid2" value='<?php echo $articleEdition['id'];?>'><br><br>
+            <input type="file" name="monFichierBis" accept="image/png, image/jpeg"><br><br>
+			<button type="submit">Publier</button>
+		</form>
 </nav>
 
 
@@ -24,7 +31,7 @@
         <?php foreach ($articleImages as $key => $image) : ?>
         <div class="edit-img">
             <img src="http://localhost/projets/bacheca/uploads/<?php echo $image['file_name'];?>">
-            <a href="http://localhost/projets/bacheca/delete-img.php?id=<?= $image['id']; ?>"><button>supprimer</button></a>
+            <a href="http://localhost/projets/bacheca/delete-img.php?id=<?=$image['id']; ?>"><button>supprimer</button></a>
         </div>
         <?php endforeach; ?>
 
