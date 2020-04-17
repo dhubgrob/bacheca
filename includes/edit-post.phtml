@@ -1,49 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title>dashboard</title>
 </head>
+
 <body>
-<nav>
-    <a href="http://localhost/projets/bacheca/">
-        <div id="name-site">
-            bacheca
+    <div id="wrapper">
+        <nav>
+
+            <a href="http://localhost/projets/bacheca/">
+                <div id="name-site">
+                    bacheca
+                </div>
+            </a>
+            <div id="nav-items">
+                <p>Hello <?php echo $usernameSession['username']; ?> !</p>
+                <a href="logout.php">log out</a>
+            </div>
+        </nav>
+        <div id="main">
+            <h2>Gestion des images</h2>
+            <div id="gestion-images">
+                <?php foreach ($articleImages as $key => $image) : ?>
+                    <div class="edit-img">
+                        <img src="http://localhost/projets/bacheca/uploads/<?php echo $image['file_name']; ?>">
+                        <a href="http://localhost/projets/bacheca/delete-img.php?id=<?= $image['id']; ?>"><button>supprimer</button></a>
+                    </div>
+                <?php endforeach; ?>
+
+                <div id="ajout-image">
+                    <form action="edit-img-post.php" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="3000000"><br><br>
+                        <input type="hidden" name="hiddenid2" value='<?php echo $articleEdition['id']; ?>'><br><br>
+                        <input type="file" name="monFichierBis" accept="image/png, image/jpeg"><br><br>
+                        <button type="submit">Publier</button>
+                    </form>
+                </div>
+            </div>
+            <h2>Gestion du texte</h2>
+            <div id="edition-article">
+
+                <form action="edit-edit-post.php" method="post">
+                    <input type='text' name='product' value=<?php echo $articleEdition['title']; ?>><br><br>
+                    <input type='hidden' name='hiddenid' value='<?php echo $articleEdition['id']; ?>'>
+                    <input type='number' name='price' value=<?php echo $articleEdition['price']; ?>><br><br>
+                    <textarea rows="8" cols="50" type='text' name='content'><?php echo $articleEdition['content']; ?></textarea><br><br>
+                    <button type="submit">Mettre à jour</button>
+                </form>
+            </div>
         </div>
-    </a>
-    <h2>Gestion d'images</h2>
-    <div id="nav-items">
-        <p>Hi, <?php echo $usernameSession['username']; ?> !</p><br>
-        <a href="logout.php">log out</a>
+        <div class="push"></div>
     </div>
-    <form action="edit-img-post.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="MAX_FILE_SIZE" value="3000000"><br><br>
-            <input type="hidden" name="hiddenid2" value='<?php echo $articleEdition['id'];?>'><br><br>
-            <input type="file" name="monFichierBis" accept="image/png, image/jpeg"><br><br>
-			<button type="submit">Publier</button>
-		</form>
-</nav>
 
-
-<div id="edition-article">
-        <h3>Modifier un article</h3>
-        <?php foreach ($articleImages as $key => $image) : ?>
-        <div class="edit-img">
-            <img src="http://localhost/projets/bacheca/uploads/<?php echo $image['file_name'];?>">
-            <a href="http://localhost/projets/bacheca/delete-img.php?id=<?=$image['id']; ?>"><button>supprimer</button></a>
-        </div>
-        <?php endforeach; ?>
-
-		<form action="edit-edit-post.php" method="post">
-            <input type='text' name='product' value=<?php echo $articleEdition['title'];?>><br><br>
-            <input type='hidden' name='hiddenid' value='<?php echo $articleEdition['id'];?>'><br><br>
-            <input type='number' name='price' value=<?php echo $articleEdition['price'];?>><br><br>
-			<textarea rows="8" cols="50" type='text' name='content'><?php echo $articleEdition['content'];?></textarea><br><br>
-			<button type="submit">Mettre à jour</button>
-		</form>
-	</div>
-
+    <?php include('includes/footer.phtml'); ?>
 
 </body>
+
 </html>

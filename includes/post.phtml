@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title><?php echo $post['title']; ?></title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <?php
+        if (!empty($_SESSION)) {
+            include('includes/nav-logged.phtml');
+        } else {
+            include('includes/nav.phtml');
+        }
+        ?>
+
+        <div id="container-post">
+            <h1><?php echo $post['title']; ?></h1><br>
+
+
+            <?php foreach ($postImages as $key => $postImage) : ?>
+
+                <div class="img-post-container">
+                    <a href="http://localhost/projets/bacheca/uploads/<?= $postImage['file_name']; ?>"><img class="img-post" src="http://localhost/projets/bacheca/uploads/<?= $postImage['file_name']; ?>"></a>
+                </div>
+
+            <?php endforeach; ?>
+
+
+                <p><?= $post['content']; ?></p>
+
+            <button>Contacter <?= $post['username']; ?></button>
+        </div>
+
+
+
+
+
+        <div class="push"></div>
+    </div>
+
+    <?php include('includes/footer.phtml'); ?>
+</body>
+
+</html>

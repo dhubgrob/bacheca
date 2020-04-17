@@ -1,57 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dashboard</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&display=swap" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<title>dashboard</title>
 </head>
+
 <body>
-<nav>
-    <a href="http://localhost/projets/bacheca/">
-        <div id="name-site">
-            bacheca
-        </div>
-    </a>
-    <div id="nav-items">
-        <p>Hi, <?php echo $usernameSession['username']; ?> !</p><br>
-        <a href="logout.php">log out</a>
-    </div>
-</nav>
-
-<div id="container-published">
-			<?php foreach ($publishedAds as $key => $ad) : ?>
-
-				<div class="published">
-					<a href="http://localhost/projets/bacheca/ad.php?id=<?= $ad['id']; ?>">
-						<h4><?= $ad['title'] ?></h4>
-					</a>
-					<p>Publié le <?= $ad['publication_date']; ?></p>
-					<a href="http://localhost/projets/bacheca/delete-post.php?id=<?= $ad['id']; ?>">
-						<button>supprimer</button></a>
-					
-						<a href="http://localhost/projets/bacheca/edit-post.php?id=<?= $ad['id']; ?>">
-						<button>modifier</button></a>
+	<div class="wrapper">
+		<nav>
+			<a href="http://localhost/projets/bacheca/">
+				<div id="name-site">
+					bacheca
 				</div>
+			</a>
+			<div id="nav-items">
+				<p>Hello <?php echo $usernameSession['username']; ?> !</p>
+				<a href="logout.php">log out</a>
+			</div>
+		</nav>
+		<div id="dashboard-main">
+			<h2>Vos annonces</h2>
+			<div id="container-published">
+
+				<?php foreach ($publishedAds as $key => $ad) : ?>
+
+					<div class="published">
+						<a href="http://localhost/projets/bacheca/ad.php?id=<?= $ad['id']; ?>">
+							<h4><?= $ad['title'] ?></h4>
+						</a>
+						<p>Publié le <?= $ad['publication_date']; ?></p>
+						<a href="http://localhost/projets/bacheca/delete-post.php?id=<?= $ad['id']; ?>">
+							<button>supprimer</button></a>
+
+						<a href="http://localhost/projets/bacheca/edit-post.php?id=<?= $ad['id']; ?>">
+							<button>modifier</button></a>
+					</div>
 
 
-			<?php endforeach; ?>
+				<?php endforeach; ?>
+			</div>
+
+
+			<div id="ajout-article">
+				<h3>Publier un nouvel article</h3>
+				<form action="add-post.php" method="post" enctype="multipart/form-data">
+					<input type='text' name='product' placeholder="que voulez-vous vendre ?"><br><br>
+					<input type='number' name='price' placeholder="prix"><br><br>
+					<textarea rows="8" cols="50" type='text' name='content' placeholder="description"></textarea><br><br>
+					<input type="hidden" name="MAX_FILE_SIZE" value="3000000"><br><br>
+					<input type="file" name="monFichier1" accept="image/png, image/jpeg"><br><br>
+					<input type="file" name="monFichier2" accept="image/png, image/jpeg"><br><br>
+					<input type="file" name="monFichier3" accept="image/png, image/jpeg"><br><br>
+					<button type="submit">Publier</button>
+				</form>
+			</div>
 		</div>
+		<div class="push"></div>
 	</div>
 
-<div id="ajout-article">
-		<h3>Publier un nouvel article</h3>
-		<form action="add-post.php" method="post" enctype="multipart/form-data">
-            <input type='text' name='product' placeholder="que voulez-vous vendre ?"><br><br>
-            <input type='number' name='price' placeholder="prix"><br><br>
-			<textarea rows="8" cols="50" type='text' name='content' placeholder="description"></textarea><br><br>
-			<input type="hidden" name="MAX_FILE_SIZE" value="3000000"><br><br>
-            <input type="file" name="monFichier1" accept="image/png, image/jpeg"><br><br>
-            <input type="file" name="monFichier2" accept="image/png, image/jpeg"><br><br>
-            <input type="file" name="monFichier3" accept="image/png, image/jpeg"><br><br>
-			<button type="submit">Publier</button>
-		</form>
-	</div>
-
-
+	<?php include('includes/footer.phtml'); ?>
 </body>
+
 </html>

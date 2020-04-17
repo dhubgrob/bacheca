@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
-<?php
-    if (!empty($_SESSION)) {
-        include('includes/nav-logged.phtml');
-    } else {
-        include('includes/nav.phtml');
-    }
-    ?>
 
-    <h1>Bacheca Bacheca</h1>
-    
+<body>
+    <div class="wrapper">
+        <?php
+        if (!empty($_SESSION)) {
+            include('includes/nav-logged.phtml');
+        } else {
+            include('includes/nav.phtml');
+        }
+        ?>
+
+
+        <div id="main">
+            <h1>Dernières annonces publiées</h1>
+            <div id="latest-ads">
+                <?php foreach ($allAds as $key => $ad) : ?>
+
+                    <div class="ad-home">
+                        <a href="http://localhost/projets/bacheca/post.php?id=<?= $ad['postid']; ?>">
+                            <h4><?= $ad['title'] ?></h4>
+                            <h4><?= $ad['price'] ?> €</h4>
+                        </a>
+                        <p>Publié le <?= $ad['publication_date']; ?></p>
+                        <h4>Par <a href="http://localhost/projets/bacheca/user.php?id=<?= $ad['userid']; ?>"><?= $ad['username']; ?></a></h4>
+                        <a href="http://localhost/projets/bacheca/post.php?id=<?= $ad['postid']; ?>"> <img class="ad-home-img" src="http://localhost/projets/bacheca/uploads/<?= $ad['file_name']; ?>"></a><br>
+                        <a href="http://localhost/projets/bacheca/post.php?id=<?= $ad['postid']; ?>"><button id="savoir-plus">en savoir plus...</button></a>
+                    </div>
+
+                <?php endforeach; ?>
+            </div>
+
+        </div>
+        <div class="push"></div>
+    </div>
+
+    <?php include('includes/footer.phtml'); ?>
 </body>
+
 </html>

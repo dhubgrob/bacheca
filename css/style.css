@@ -1,0 +1,244 @@
+html, body {
+    font-family: 'Hind Siliguri', sans-serif;
+    margin : 0;
+    padding: 0;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    margin: 0;
+}
+
+a:hover {
+    color:grey;
+}
+
+nav {
+    background-color: #fcba03;
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.ad-home img {
+    max-width: 200px;
+   
+}
+
+.ad-home {
+    background-color: #fcba03;
+    padding: 30px;
+    border-radius: 5px;
+    margin: 30px;
+}
+
+#main {
+    
+    padding-left: 30px;
+
+}
+
+#latest-ads {
+    display: inline-flex;
+}
+
+
+.footer {
+    background-color: black;
+    color: white;
+
+    width: 100%;
+    height: 50px;
+}
+
+
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.push {
+    height: 50px;
+}
+
+
+
+
+#savoir-plus {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border: none;
+    font-weight: 600;
+    margin-top: 30px;
+    width: 200px;
+}
+
+#savoir-plus:hover {
+    background-color:  white;
+    color: black;
+}
+
+#name-site {
+    color: black;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-left: 30px;
+}
+
+#name-site:hover {
+    color: gray;
+}
+
+#nav-items {
+    margin-top: 0;
+    padding-right: 30px;
+    
+}
+
+#nav-items a {
+    color: black;
+}
+
+#nav-items a:hover {
+    color:gray;
+}
+
+#nav-items p {
+    font-weight: 600;
+}
+
+#dashboard-main {
+    margin-left: 30px;
+}
+
+#container-published {
+    display: inline-flex;
+}
+
+.published {
+    width: 300px;
+    background-color: #fcba03;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.published button {
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 10px;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
+.published button:hover {
+    background-color: white;
+    color: black;
+}
+
+.edit-img {
+    max-width: 200px;
+    background-color: #fcba03;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 5px;
+}
+
+.edit-img img {
+    max-width: 200px;
+
+}
+
+.edit-img button {
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 10px;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
+.edit-img button:hover {
+    background-color: white;
+    color: black;
+}
+
+#gestion-images {
+    display: inline-flex
+}
+
+#ajout-image {
+    width: 300px;
+    background-color: gray;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 5px;
+}
+
+#ajout-image button {
+    background-color: #fcba03;
+    font-weight: 600;
+    border: none;
+    padding: 10px;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
+#ajout-image input{
+    background-color: #fcba03;
+    font-weight: 600;
+    border: none;
+    padding: 10px;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
+#edition-article {
+    padding-top: 50px;
+    width: 1000px;
+    background-color: #fcba03;
+    padding-left: 200px;
+    padding-bottom: 50px;
+    margin-left: 30px;
+    border-radius: 5px;
+}
+
+#container-post {
+    width: 50vw;
+    margin-left: 15vw;
+    padding: 30px;
+    background: lightgray;
+    margin-top: 50px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+#container-post img {
+    max-width: 50vw;
+}
+
+#container-post h1 {
+    margin: 0;
+}
+
+#container-post button {
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#container-post button:hover {
+    background-color: white;
+    color: black;
+}

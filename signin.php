@@ -1,21 +1,13 @@
 <?php
 
+
 require "load-db.php";
-
-
-include 'includes/signin.phtml';
 
 session_start();
 
+require "check-auth.php";
 
-if(!empty($_SESSION)){
-// requête qui récupère le username du membre connecté
-$query = 'SELECT username FROM users WHERE id= :iduser';
-$sth = $dbh->prepare($query);
-$sth->bindValue(':iduser', trim($_SESSION['userid']), PDO::PARAM_STR);
-$sth->execute();
-$usernameSession = $sth->fetch();
-}
+require "load-username.php";
 
 if (!empty($_POST)) {
 
@@ -33,3 +25,5 @@ if (!empty($_POST)) {
 	//header('Location:index.php');
 	//exit;
 }
+
+include 'includes/signin.phtml';

@@ -4,26 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title>sign in</title>
     <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-    <?php
-    if (!empty($_SESSION)) {
-        include('includes/nav_logged.phtml');
-    } else {
-        include('includes/nav.phtml');
-    }
-    ?>
-    <div id="container-form-signup">
-        <h2>inscription</h2>
-        <form action="login.php" method="post">
-            <input type="text" placeholder="username" name="username">
-            <input type="password" placeholder="password" name="password">
-            <button type="input">sign up</button>
-        </form>
+    <div class="wrapper">
+        <?php
+        if (!empty($_SESSION)) {
+            include('includes/nav_logged.phtml');
+        } else {
+            include('includes/nav.phtml');
+        }
+        ?>
+        <div id="container-form-signup">
+            <h2>connexion</h2>
+            <form action="login.php" method="post">
+                <input type="text" placeholder="username" name="username">
+                <input type="password" placeholder="password" name="password">
+                <button type="input">sign up</button>
+            </form>
+        </div>
+
+        <div class="push"></div>
     </div>
+
     <?php include('includes/footer.phtml'); ?>
 </body>
 
