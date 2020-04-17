@@ -222,7 +222,7 @@ nav {
     margin-bottom: 50px;
 }
 
-#container-post img {
+#img-post-container {
     max-width: 50vw;
 }
 
@@ -241,4 +241,9 @@ nav {
 #container-post button:hover {
     background-color: white;
     color: black;
+}
+
+#feature-img-post {
+    width: 100vw;
+    height: 2000px;
 }

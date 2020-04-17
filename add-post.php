@@ -19,7 +19,7 @@ require "load-db.php";
 //	Si l'utilisateur n'est pas authentifié
 if (!array_key_exists('userid', $_SESSION)) {
     //	Redirection vers la page d'accueil
-    header('Location: ./');
+    header('Location: index.php');
     exit;
 }
 
@@ -51,20 +51,21 @@ if (!empty($_POST)) {
                     $posts = $sth->fetchAll();
                     
 
-                    $query = 'INSERT INTO posts (title, price, content, userid) VALUES (:title, :price, :content, :userid)';
+                    $query = 'INSERT INTO posts (title, price, content, userid, featureImg) VALUES (:title, :price, :content, :userid, :featureImg)';
                     $sth = $dbh->prepare($query);
                     $sth->bindValue(':title', htmlspecialchars($_POST['product']), PDO::PARAM_STR);
                     $sth->bindValue(':price', htmlspecialchars($_POST['price']), PDO::PARAM_STR);
                     $sth->bindValue(':content', htmlspecialchars($_POST['content']), PDO::PARAM_STR);
                     $sth->bindValue(':userid', $_SESSION['userid'], PDO::PARAM_STR);
+                    $sth->bindValue(':featureImg', 'null', PDO::PARAM_STR);
                     $sth->execute();
                     $idArticle = $dbh->lastInsertId();
 
                     if(strpos($urlImage1, '.jpg') OR strpos($urlImage1, '.png')) { 
 
-                    $query = 'INSERT INTO images (file_name, postid) VALUES(:file_name, :postid)';
+                    $query = 'UPDATE posts SET featureImg=:feature WHERE id=:postid';
                     $sth = $dbh->prepare($query);
-                    $sth->bindValue(':file_name', $urlImage1, PDO::PARAM_STR);
+                    $sth->bindValue(':feature', $urlImage1, PDO::PARAM_STR);
                     $sth->bindValue(':postid', $idArticle, PDO::PARAM_STR);
                     $sth->execute();
                     }

@@ -22,16 +22,17 @@
 
         <div id="container-post">
             <h1><?php echo $post['title']; ?></h1><br>
-
-
+            <h2><?php echo $post['price']; ?> €</h2><br>
+            <a href="http://localhost/projets/bacheca/uploads/<?= $post['featureImg']; ?>"><img id="feature-img-post" src="http://localhost/projets/bacheca/uploads/<?= $post['featureImg']; ?>"></a>
+            <div class="img-post-container">
             <?php foreach ($postImages as $key => $postImage) : ?>
 
-                <div class="img-post-container">
+                
                     <a href="http://localhost/projets/bacheca/uploads/<?= $postImage['file_name']; ?>"><img class="img-post" src="http://localhost/projets/bacheca/uploads/<?= $postImage['file_name']; ?>"></a>
-                </div>
+                
 
             <?php endforeach; ?>
-
+            </div>
 
                 <p><?= $post['content']; ?></p>
 

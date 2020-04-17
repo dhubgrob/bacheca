@@ -5,7 +5,7 @@ require "load-db.php";
 
 session_start();
 
-require "check-auth.php";
+
 
 require "load-username.php";
 
@@ -22,8 +22,8 @@ if (!empty($_POST)) {
 
 
 
-	//header('Location:index.php');
-	//exit;
+	header('Location:index.php');
+	exit;
 }
 
 include 'includes/signin.phtml';

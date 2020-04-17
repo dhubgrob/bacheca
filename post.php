@@ -12,7 +12,7 @@ require "load-username.php";
 
 // requête pour récupération des textes de l'article en question
 
-$query = 'SELECT * FROM posts INNER JOIN users ON posts.userid = users.id WHERE posts.id= :id';
+$query = 'SELECT * FROM posts INNER JOIN users ON posts.userid=users.id WHERE posts.id= :id';
 $sth = $dbh->prepare($query);
 $sth->bindValue(':id', $_GET['id'], PDO::PARAM_STR);
 $sth->execute();
@@ -23,7 +23,6 @@ $sth = $dbh->prepare($query);
 $sth->bindValue(':id', $_GET['id'], PDO::PARAM_STR);
 $sth->execute();
 $postImages = $sth->fetchAll();
-
 
 
 include 'includes/post.phtml';

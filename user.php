@@ -1,8 +1,15 @@
 <?php
 
+
 require "load-db.php";
 
 session_start();
+
+//require "check-auth.php";
+
+require "load-username.php";
+
+
 
 // requête pour récupération des articles de l'auteur
 
