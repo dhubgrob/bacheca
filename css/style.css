@@ -244,6 +244,15 @@ nav {
 }
 
 #feature-img-post {
-    width: 100vw;
-    height: 2000px;
+    width: 700px;
+   
+}
+
+#container-form-signup {
+    background-color: lightgray;
+    width: 500px;
+    margin-left: 30px;
+    border-radius: 5px;
+    padding: 30px;
+    margin-top: 50px;
 }

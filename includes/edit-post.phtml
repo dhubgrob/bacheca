@@ -26,6 +26,27 @@
         <div id="main">
             <h2>Gestion des images</h2>
             <div id="gestion-images">
+
+                <?php if ($articleEdition['featureImg'] != 'null.jpg') : ?>
+                    <div class="edit-img">
+                        <img src="http://localhost/projets/bacheca/uploads/<?php echo $articleEdition['featureImg']; ?>">
+                        <a href="http://localhost/projets/bacheca/delete-img.php?otherid=<?= $articleEdition['id']; ?>"><button>supprimer</button></a>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($articleEdition['featureImg'] == 'null.jpg') : ?>
+                    <div class="edit-img">
+                    <p>Attention !<br>Image principale manquante !<br>Pour y remédier :
+                        <form action="edit-img-post.php" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="3000000"><br><br>
+                            <input type="hidden" name="hiddenid2" value='<?php echo $articleEdition['id']; ?>'><br><br>
+                            <input type="file" name="monFichierTer" accept="image/png, image/jpeg"><br><br>
+                            <button type="submit">Publier</button>
+                        </form>
+                    </div>
+
+                    <?php endif; ?>
+
                 <?php foreach ($articleImages as $key => $image) : ?>
                     <div class="edit-img">
                         <img src="http://localhost/projets/bacheca/uploads/<?php echo $image['file_name']; ?>">
@@ -34,6 +55,10 @@
                 <?php endforeach; ?>
 
                 <div id="ajout-image">
+                   
+
+                    
+                        <p>Ajouter une image secondaire</p>
                     <form action="edit-img-post.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="MAX_FILE_SIZE" value="3000000"><br><br>
                         <input type="hidden" name="hiddenid2" value='<?php echo $articleEdition['id']; ?>'><br><br>

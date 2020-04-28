@@ -36,7 +36,8 @@
 
                 <p><?= $post['content']; ?></p>
 
-            <button>Contacter <?= $post['username']; ?></button>
+            <a href="http://localhost/projets/bacheca/message.php?id=<?= $post['userid']; ?>&ad=<?= $post['title']; ?>"><button>Contacter <?= $post['username']; ?></button></a>
+            
         </div>
 
 

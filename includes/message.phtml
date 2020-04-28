@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Contacter le vendeur</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <?php
+        if (!empty($_SESSION)) {
+            include('includes/nav-logged.phtml');
+        } else {
+            include('includes/nav.phtml');
+        }
+        ?>
+
+
+        <div id="main">
+         <h2>Contacter le vendeur</h2>
+
+         <form action="send-msg.php" method="post">
+         <input name="subj" type="text">
+         <input name="content" type="text">
+         <input type="hidden" name="adid" value="<?php $ad['id'];?>">
+         <input type="hidden" name="recipientid" value="<?php $ad['userid'];?>">
+         <button type="submit">envoyer</button>
+         </form>
+
+
+            </div>
+
+        </div>
+        <div class="push"></div>
+    </div>
+
+    <?php include('includes/footer.phtml'); ?>
+</body>
+
+</html>
