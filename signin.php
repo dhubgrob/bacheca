@@ -1,18 +1,18 @@
 <?php
 
 
-require "load-db.php";
+
+
+if (!empty($_SESSION)) {
 
 session_start();
 
-
-
 require "load-username.php";
+}
 
 if (!empty($_POST)) {
 
-    require "load-db.php";
-
+	require "load-db.php";
 
 	$query = 'INSERT INTO users (username, hashed_password) VALUES (:username, :passwordHash)';
 	$sth = $dbh->prepare($query);

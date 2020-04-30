@@ -38,17 +38,6 @@ if (!empty($_POST)) {
                     $urlImage3 = uniqid() . "." . pathinfo($_FILES['monFichier3']['name'], PATHINFO_EXTENSION);
                     move_uploaded_file($_FILES['monFichier3']['tmp_name'], 'uploads/' . $urlImage3);
 
-
-                    $query = 'SELECT * FROM posts INNER JOIN images ON posts.id = images.postid';
-                    $sth = $dbh->prepare($query);
-                    $sth->execute();
-                    $imagesAndArticles = $sth->fetchAll();
-                
-
-                    $query = 'SELECT * FROM posts';
-                    $sth = $dbh->prepare($query);
-                    $sth->execute();
-                    $posts = $sth->fetchAll();
                     
 
                     $query = 'INSERT INTO posts (title, price, content, userid, featureImg) VALUES (:title, :price, :content, :userid, :featureImg)';
@@ -57,7 +46,7 @@ if (!empty($_POST)) {
                     $sth->bindValue(':price', htmlspecialchars($_POST['price']), PDO::PARAM_STR);
                     $sth->bindValue(':content', htmlspecialchars($_POST['content']), PDO::PARAM_STR);
                     $sth->bindValue(':userid', $_SESSION['userid'], PDO::PARAM_STR);
-                    $sth->bindValue(':featureImg', 'null', PDO::PARAM_STR);
+                    $sth->bindValue(':featureImg', null, PDO::PARAM_NULL);
                     $sth->execute();
                     $idArticle = $dbh->lastInsertId();
 
@@ -102,7 +91,7 @@ if (!empty($_POST)) {
     }
 
 
-
+/*
     // gestion des upload de 1 image
     elseif (array_key_exists('monFichier1', $_FILES)) {
         if ($_FILES['monFichier1']['error'] == 0) {
@@ -156,3 +145,4 @@ if (!empty($_POST)) {
         }
     }
 }}
+*/

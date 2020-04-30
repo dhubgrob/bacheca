@@ -1,5 +1,5 @@
 <?php
 session_start();
-session_destroy();
-header('Location: http://localhost/projets/bacheca/');
+unset($_SESSION['userid']);
+header('Location: ./');
 exit;

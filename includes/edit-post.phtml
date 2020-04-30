@@ -27,14 +27,14 @@
             <h2>Gestion des images</h2>
             <div id="gestion-images">
 
-                <?php if ($articleEdition['featureImg'] != 'null.jpg') : ?>
+                <?php if ($articleEdition['featureImg'] != null) : ?>
                     <div class="edit-img">
                         <img src="http://localhost/projets/bacheca/uploads/<?php echo $articleEdition['featureImg']; ?>">
                         <a href="http://localhost/projets/bacheca/delete-img.php?otherid=<?= $articleEdition['id']; ?>"><button>supprimer</button></a>
                     </div>
-                <?php endif; ?>
+                
 
-                <?php if ($articleEdition['featureImg'] == 'null.jpg') : ?>
+                <?php elseif ($articleEdition['featureImg'] == null) : ?>
                     <div class="edit-img">
                     <p>Attention !<br>Image principale manquante !<br>Pour y remédier :
                         <form action="edit-img-post.php" method="post" enctype="multipart/form-data">

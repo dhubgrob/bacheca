@@ -1,22 +1,16 @@
 <?php
 
-require "load-db.php";
 
-session_start();
+
+
 
 require "check-auth.php";
 
+session_start();
+
+require "load-db.php";
+
 require "load-username.php";
-
-
-// requête qui récupère le username du membre connecté
-$query = 'SELECT username FROM users WHERE id= :iduser';
-$sth = $dbh->prepare($query);
-$sth->bindValue(':iduser', trim($_SESSION['userid']), PDO::PARAM_STR);
-$sth->execute();
-$usernameSession = $sth->fetch();
-
-
 
 $query = 'SELECT * FROM posts WHERE id = ?';
 $sth = $dbh->prepare($query);

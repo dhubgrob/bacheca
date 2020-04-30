@@ -6,7 +6,7 @@ require "load-db.php";
 
 array_flip($_GET);
 
-if (array_key_exists('id', $_GET) and intval($_GET['id']) > 0) {
+if (array_key_exists('id', $_GET)) {
     
     $query = 'DELETE FROM IMAGES WHERE id = :id';
 	$sth = $dbh->prepare($query);

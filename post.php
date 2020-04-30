@@ -15,7 +15,7 @@ $sth = $dbh->prepare($query);
 $sth->bindValue(':id', $_GET['id'], PDO::PARAM_STR);
 $sth->execute();
 $post = $sth->fetch();
-var_dump($post);
+
 
 $query = 'SELECT * FROM images WHERE postid= :id';
 $sth = $dbh->prepare($query);
